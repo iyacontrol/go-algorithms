@@ -130,4 +130,118 @@ func main() {
 		l = l.Next
 	}
 
+	fmt.Println("删除有序数组中的重复项")
+	nums = []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	fmt.Println(pkg.RemoveDuplicates(nums))
+
+	fmt.Println("只出现一次的数字")
+	nums = []int{4, 1, 2, 1, 2}
+	fmt.Println(pkg.SingleNumber(nums))
+
+	fmt.Println("爬楼梯")
+	fmt.Println(pkg.ClimbStairs(3))
+
+	fmt.Println("买卖股票的最佳时机")
+	nums = []int{7, 1, 5, 3, 6, 4}
+	fmt.Println(pkg.MaxProfit(nums))
+
+	fmt.Println("最长公共前缀")
+	strs := []string{"flower", "flow", "flight"}
+	fmt.Println(pkg.LongestCommonPrefix(strs))
+
+	fmt.Println("移动零")
+	nums = []int{0, 1, 0, 3, 12}
+	pkg.MoveZeroes(nums)
+	fmt.Println(nums)
+
+	fmt.Println("合并两个有序链表")
+	l1 = &pkg.ListNode{
+		1,
+		&pkg.ListNode{
+			2,
+			&pkg.ListNode{
+				4,
+				nil,
+			},
+		},
+	}
+
+	l2 = &pkg.ListNode{
+		1,
+		&pkg.ListNode{
+			3,
+			&pkg.ListNode{
+				4,
+				nil,
+			},
+		},
+	}
+
+	l = pkg.MergeTwoLists(l1, l2)
+	for l != nil {
+		fmt.Println(l.Val)
+		l = l.Next
+	}
+
+	fmt.Println("和为 K 的子数组")
+	nums = []int{1, 2, 3}
+	fmt.Println(pkg.SubarraySum(nums, 3))
+
+	fmt.Println("搜索插入位置")
+	nums = []int{1, 3, 5, 7}
+	fmt.Println(pkg.SearchInsert(nums, 6))
+
+	fmt.Println("字符串相加")
+	num1 := "11"
+	num2 := "123"
+
+	fmt.Println(pkg.AddStrings(num1, num2))
+
+	fmt.Println("两两交换链表中的节点")
+	l1 = &pkg.ListNode{
+		1,
+		&pkg.ListNode{
+			2,
+			&pkg.ListNode{
+				3,
+				&pkg.ListNode{
+					4,
+					nil,
+				},
+			},
+		},
+	}
+
+	l = pkg.SwapPairs(l1)
+	for l != nil {
+		fmt.Println(l.Val)
+		l = l.Next
+	}
+
+	fmt.Println("螺旋矩阵")
+	matrix = [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}
+	fmt.Println(pkg.SpiralOrder(matrix))
+
+	fmt.Println("排序链表")
+
+	l1 = &pkg.ListNode{
+		4,
+		&pkg.ListNode{
+			2,
+			&pkg.ListNode{
+				1,
+				&pkg.ListNode{
+					3,
+					nil,
+				},
+			},
+		},
+	}
+
+	l = pkg.SortList(l1)
+	for l != nil {
+		fmt.Println(l.Val)
+		l = l.Next
+	}
+
 }
