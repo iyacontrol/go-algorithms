@@ -244,4 +244,31 @@ func main() {
 		l = l.Next
 	}
 
+	fmt.Println("字母异位词分组")
+	strs = []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	fmt.Println(pkg.GroupAnagrams(strs))
+
+	fmt.Println("最长连续序列")
+	nums = []int{100, 4, 200, 1, 3, 2}
+	fmt.Println(pkg.LongestConsecutive(nums))
+
+	fmt.Println("找到字符串中所有字母异位词")
+	s = "cbaebabacd"
+	p := "abc"
+	fmt.Println(pkg.FindAnagrams(s, p))
+
+	fmt.Println("合并区间")
+	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+
+	fmt.Println(pkg.Merge(intervals))
+
+	fmt.Println("快排")
+	nums = []int{100, 4, 200, 1, 3, 2}
+	pkg.QuickSort(nums, 0, len(nums)-1)
+	fmt.Println(nums)
+
+	fmt.Println("归并")
+	nums = []int{100, 4, 200, 1, 3, 2}
+	fmt.Println(pkg.MergeSort(nums))
+
 }
