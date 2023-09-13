@@ -271,4 +271,38 @@ func main() {
 	nums = []int{100, 4, 200, 1, 3, 2}
 	fmt.Println(pkg.MergeSort(nums))
 
+	fmt.Println("判断子序列")
+	s = "ahbgdc"
+	p = "abc"
+	fmt.Println(pkg.IsSubsequence(p, s))
+
+	fmt.Println("除自身以外数组的乘积")
+	nums = []int{100, 4, 200, 1, 3, 2}
+	fmt.Println(pkg.ProductExceptSelf(nums))
+
+	fmt.Println("轮转数组")
+	nums = []int{1, 2, 3, 4, 5, 6, 7}
+	pkg.Rotate(nums, 6)
+	fmt.Println(nums)
+
+	fmt.Println("前 K 个高频元素")
+	nums = []int{1, 1, 1, 2, 3, 3, 4, 4, 4}
+	fmt.Println(pkg.TopKFrequent(nums, 2))
+
+	fmt.Println("数组中的第K个最大元素")
+	nums = []int{3, 2, 1, 5, 6, 4}
+	fmt.Println(pkg.FindKthLargest(nums, 2))
+
+	fmt.Println("字符串解码")
+	s = "3[a2[c]]"
+	fmt.Println(pkg.DecodeString(s))
+
+	fmt.Println("每日温度")
+	nums = []int{73, 74, 75, 71, 69, 72, 76, 73}
+	fmt.Println(pkg.DailyTemperatures(nums))
+
+	fmt.Println("蛇形矩阵")
+	for _, m := range pkg.SpiderMatrix(9, 5) {
+		fmt.Println(m)
+	}
 }
