@@ -2,11 +2,14 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
 	pkg "github.com/iyacontrol/go-algorithms/pkg"
 )
 
 func main() {
+
+	runtime.GOMAXPROCS(1)
 	// 矩阵置零
 	fmt.Println("矩阵置零")
 	matrix := [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}
@@ -305,4 +308,67 @@ func main() {
 	for _, m := range pkg.SpiderMatrix(9, 5) {
 		fmt.Println(m)
 	}
+
+	fmt.Println("长度最小的子数组")
+	nums = []int{2, 3, 1, 2, 4, 3}
+	fmt.Println(pkg.MinSubArrayLen(7, nums))
+
+	fmt.Println("旋转图像")
+	matrix = [][]int{{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}}
+	pkg.RotateMatrix(matrix)
+	fmt.Println(matrix)
+
+	fmt.Println("组合之和")
+	nums = []int{2, 3, 6, 7}
+	fmt.Println(pkg.CombinationSum(nums, 7))
+
+	fmt.Println("括号生成")
+	fmt.Println(pkg.GenerateParenthesis(2))
+
+	fmt.Println("全排列")
+	nums = []int{1, 2, 3}
+	fmt.Println(pkg.Permute(nums))
+
+	fmt.Println("子集")
+	nums = []int{1, 2, 3}
+	fmt.Println(pkg.Subsets(nums))
+
+	fmt.Println("下一个排列")
+	nums = []int{1, 2, 3}
+	pkg.NextPermutation(nums)
+	fmt.Println(nums)
+
+	fmt.Println("电话号码的字母组合")
+	fmt.Println(pkg.LetterCombinations("2"))
+
+	fmt.Println("交替打印数字")
+	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
+
+	chan1 <- 1
+	go func() {
+		for i := 1; i <= 10; i++ {
+			<-chan1
+			fmt.Println(1)
+			chan2 <- 2
+		}
+	}()
+
+	go func() {
+		for i := 1; i <= 10; i++ {
+			<-chan2
+			fmt.Println(2)
+			chan3 <- 3
+		}
+	}()
+
+	go func() {
+		for i := 1; i <= 10; i++ {
+			<-chan3
+			fmt.Println(3)
+			if i <= 9 {
+				chan1 <- 1
+			}
+		}
+	}()
+
 }
