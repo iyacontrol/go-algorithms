@@ -341,6 +341,30 @@ func main() {
 	fmt.Println("电话号码的字母组合")
 	fmt.Println(pkg.LetterCombinations("2"))
 
+	fmt.Println("旋转列表")
+	l = &pkg.ListNode{
+		1,
+		&pkg.ListNode{
+			2,
+			&pkg.ListNode{
+				3,
+				&pkg.ListNode{
+					4,
+					&pkg.ListNode{
+						5,
+						nil,
+					},
+				},
+			},
+		},
+	}
+
+	l = pkg.RotateRight(l, 1)
+	for l != nil {
+		fmt.Println(l.Val)
+		l = l.Next
+	}
+
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
 
