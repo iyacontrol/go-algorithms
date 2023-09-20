@@ -1,6 +1,8 @@
 package pkg
 
-import "container/heap"
+import (
+	"container/heap"
+)
 
 // 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 
@@ -23,6 +25,7 @@ func FindKthLargest(nums []int, k int) int {
 
 	for i := 0; i < n-k; i++ {
 		heap.Pop(h)
+		// fmt.Println(heap.Pop(h).(int))
 	}
 
 	return heap.Pop(h).(int)

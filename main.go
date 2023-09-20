@@ -319,8 +319,12 @@ func main() {
 	fmt.Println(matrix)
 
 	fmt.Println("组合之和")
-	nums = []int{2, 3, 6, 7}
-	fmt.Println(pkg.CombinationSum(nums, 7))
+	nums = []int{2, 3, 5}
+	fmt.Println(pkg.CombinationSum(nums, 8))
+
+	fmt.Println("组合之和2")
+	nums = []int{2, 3, 5}
+	fmt.Println(pkg.CombinationSum2(nums, 8))
 
 	fmt.Println("括号生成")
 	fmt.Println(pkg.GenerateParenthesis(2))
@@ -364,6 +368,29 @@ func main() {
 		fmt.Println(l.Val)
 		l = l.Next
 	}
+
+	fmt.Println("从前序与中序遍历序列构造二叉树")
+	preorder := []int{3, 9, 20, 15, 7}
+	inorder := []int{9, 3, 15, 20, 7}
+
+	tree := pkg.BuildTree(preorder, inorder)
+	fmt.Println(tree)
+
+	fmt.Println("从后序与中序遍历序列构造二叉树")
+	postorder := []int{9, 15, 7, 20, 3}
+	inorder = []int{9, 3, 15, 20, 7}
+
+	tree = pkg.PostBuildTree(inorder, postorder)
+	fmt.Println(tree)
+
+	fmt.Println("最小路径和")
+	grid := [][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}
+	fmt.Println(pkg.MinPathSum(grid))
+
+	fmt.Println("颜色分类")
+	nums = []int{2, 0, 2, 1, 1, 0}
+	pkg.SortColors(nums)
+	fmt.Println(nums)
 
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
