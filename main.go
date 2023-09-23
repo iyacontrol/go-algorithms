@@ -343,7 +343,7 @@ func main() {
 	fmt.Println(nums)
 
 	fmt.Println("电话号码的字母组合")
-	fmt.Println(pkg.LetterCombinations("2"))
+	fmt.Println(pkg.LetterCombinations("23"))
 
 	fmt.Println("旋转列表")
 	l = &pkg.ListNode{
@@ -391,6 +391,48 @@ func main() {
 	nums = []int{2, 0, 2, 1, 1, 0}
 	pkg.SortColors(nums)
 	fmt.Println(nums)
+
+	fmt.Println("N字形变换")
+	s = "PAYPALISHIRING"
+	fmt.Println(pkg.Convert(s, 3))
+
+	fmt.Println("最长回文子串")
+	s = "babad"
+	fmt.Println(pkg.LongestPalindrome(s))
+
+	fmt.Println("路径之和")
+	tree = &pkg.TreeNode{
+		Val: 5,
+		Left: &pkg.TreeNode{
+			Val: 4,
+			Left: &pkg.TreeNode{
+				Val: 11,
+				Left: &pkg.TreeNode{
+					Val: 7,
+				},
+				Right: &pkg.TreeNode{
+					Val: 2,
+				},
+			},
+		},
+		Right: &pkg.TreeNode{
+			Val: 8,
+			Left: &pkg.TreeNode{
+				Val: 13,
+			},
+			Right: &pkg.TreeNode{
+				Val: 4,
+				Left: &pkg.TreeNode{
+					Val: 5,
+				},
+				Right: &pkg.TreeNode{
+					Val: 1,
+				},
+			},
+		},
+	}
+
+	fmt.Println(pkg.PathSum(tree, 22))
 
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)

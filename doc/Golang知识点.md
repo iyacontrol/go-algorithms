@@ -41,3 +41,24 @@ Slice = 指向底层数组的头指针，和长度len，以及容量。
 扩容规则：当切片比较小时（容量小于 1024），采用较大的扩容倍速进行扩容（新的扩容会是原来的2倍，避免频繁扩容，从而减少内存分配的次数和数据拷贝的代价。当切片较大的时，（原来的 slice 的容量大于或者等于 1024），采用较小的扩容倍速（新的扩容将扩大大于或者等于原来 1.25 倍），主要避免空间浪费（网上其实很多总结的是 1.25 倍，那是在不考虑内存对齐的情况下，实际上还要考虑内存对齐，扩容是大于或者等于 1.25 倍）。
 
 
+### go中channel 的实现原理和使用方式
+
+数据结构：
+
+```
+
+type hchan struct {
+    qcount   uint           // 循环队列元素的数量
+    dataqsiz uint           // 循环队列的大小
+    buf      unsafe.Pointer // 循环队列缓冲区的数据指针
+    elemsize uint16         // chan中元素的大小
+    closed   uint32         // 是否已close
+    elemtype *_type         // chan 中元素类型
+    sendx    uint           // send 发送操作在 buf 中的位置
+    recvx    uint           // recv 接收操作在 buf 中的位置
+    recvq    waitq          // receiver的等待队列
+    sendq    waitq          // senderl的等待队列
+
+    lock mutex              // 互斥锁，保护所有字段
+}
+```

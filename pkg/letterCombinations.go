@@ -23,7 +23,7 @@ func LetterCombinations(digits string) []string {
 
 	var dfs func(index int, temp []byte)
 	dfs = func(index int, temp []byte) {
-		if index == n {
+		if len(temp) == n {
 			newTemp := make([]byte, len(temp))
 			copy(newTemp, temp)
 			res = append(res, string(newTemp))
