@@ -6,5 +6,18 @@ package pkg
 // 展开后的单链表应该与二叉树 先序遍历 顺序相同。
 
 func Flatten(root *TreeNode) {
+	if root == nil {
+		return
+	}
 
+	Flatten(root.Left)
+	Flatten(root.Right)
+
+	left, right := root.Left, root.Right
+	root.Left = nil
+	root.Right = left
+	for root.Right != nil {
+		root = root.Right
+	}
+	root.Right = right
 }
