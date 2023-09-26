@@ -3,13 +3,25 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"time"
 
 	alg "github.com/iyacontrol/go-algorithms/alg"
+	"github.com/iyacontrol/go-algorithms/project"
 )
+
+type Task struct {
+	taskID int
+}
+
+func (t *Task) Do() {
+	time.Sleep(1 * time.Second)
+	fmt.Printf("Task %d is being executed\n", t.taskID)
+}
 
 func main() {
 
 	runtime.GOMAXPROCS(1)
+
 	// 矩阵置零
 	fmt.Println("矩阵置零")
 	matrix := [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}
@@ -433,6 +445,37 @@ func main() {
 	}
 
 	fmt.Println(alg.PathSum(tree, 22))
+
+	fmt.Println("插入区间")
+	intervals = [][]int{{1, 3}, {6, 9}}
+	newInterval := []int{2, 5}
+	fmt.Println(alg.Insert(intervals, newInterval))
+
+	fmt.Println("4数之和")
+	nums = []int{1, 0, -1, 0, -2, 2}
+	fmt.Println(alg.FourSum(nums, 0))
+
+	fmt.Println("字符串相乘")
+	fmt.Println(alg.Multiply("1234", "567"))
+
+	return
+
+	fmt.Println("任务管理器")
+	numWorkers := 5
+	scheduler := project.New(numWorkers)
+
+	for i := 0; i < 200; i++ {
+		task := &Task{
+			taskID: i,
+		}
+
+		scheduler.AddTask(task)
+
+	}
+
+	time.Sleep(250 * time.Second)
+
+	scheduler.Stop()
 
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
