@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	pkg "github.com/iyacontrol/go-algorithms/pkg"
+	alg "github.com/iyacontrol/go-algorithms/alg"
 )
 
 func main() {
@@ -13,45 +13,45 @@ func main() {
 	// 矩阵置零
 	fmt.Println("矩阵置零")
 	matrix := [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}
-	pkg.SetZeroes(matrix)
+	alg.SetZeroes(matrix)
 	fmt.Println(matrix)
 
 	// 两数之和
 	fmt.Println("两数之和")
 	nums := []int{2, 7, 11, 15}
-	fmt.Println(pkg.TwoSum(nums, 9))
+	fmt.Println(alg.TwoSum(nums, 9))
 
 	// 搜索旋转有序数组
 	fmt.Println("搜索旋转有序数组")
 	nums = []int{4, 5, 6, 7, 0, 1, 2}
-	fmt.Println(pkg.Search(nums, 0))
+	fmt.Println(alg.Search(nums, 0))
 
 	// 两数相加
 	// l1 = [2,4,3], l2 = [5,6,4]
 	fmt.Println("两数相加")
-	l1 := &pkg.ListNode{
+	l1 := &alg.ListNode{
 		2,
-		&pkg.ListNode{
+		&alg.ListNode{
 			4,
-			&pkg.ListNode{
+			&alg.ListNode{
 				3,
 				nil,
 			},
 		},
 	}
 
-	l2 := &pkg.ListNode{
+	l2 := &alg.ListNode{
 		5,
-		&pkg.ListNode{
+		&alg.ListNode{
 			6,
-			&pkg.ListNode{
+			&alg.ListNode{
 				4,
 				nil,
 			},
 		},
 	}
 
-	l3 := pkg.AddTwoNumbers(l1, l2)
+	l3 := alg.AddTwoNumbers(l1, l2)
 
 	for l3 != nil {
 		fmt.Println(l3.Val)
@@ -61,34 +61,34 @@ func main() {
 	// 无重复字符的最长子串
 	fmt.Println("无重复字符的最长子串")
 	s := "abcabcbb"
-	fmt.Println(pkg.LengthOfLongestSubstring(s))
+	fmt.Println(alg.LengthOfLongestSubstring(s))
 
 	fmt.Println("三数之和")
 	nums = []int{-1, 0, 1, 2, -1, -4}
-	fmt.Println(pkg.ThreeSum(nums))
+	fmt.Println(alg.ThreeSum(nums))
 
 	fmt.Println("盛最多水的容器")
 	nums = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-	fmt.Println(pkg.MaxArea(nums))
+	fmt.Println(alg.MaxArea(nums))
 
 	fmt.Println("最长递增子序列")
 	nums = []int{10, 9, 2, 5, 3, 7, 101, 18}
-	fmt.Println(pkg.LengthOfLIS(nums))
+	fmt.Println(alg.LengthOfLIS(nums))
 
 	fmt.Println("打家劫舍")
 	nums = []int{1, 2, 3, 1}
-	fmt.Println(pkg.Rob(nums))
+	fmt.Println(alg.Rob(nums))
 
 	fmt.Println("删除链表的倒数第 N 个结点")
-	l := &pkg.ListNode{
+	l := &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				3,
-				&pkg.ListNode{
+				&alg.ListNode{
 					4,
-					&pkg.ListNode{
+					&alg.ListNode{
 						5,
 						nil,
 					},
@@ -97,7 +97,7 @@ func main() {
 		},
 	}
 
-	l = pkg.RemoveNthFromEnd(l, 2)
+	l = alg.RemoveNthFromEnd(l, 2)
 
 	for l != nil {
 		fmt.Println(l.Val)
@@ -106,18 +106,18 @@ func main() {
 
 	fmt.Println("最大子数组和")
 	nums = []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
-	fmt.Println(pkg.MaxSubArray(nums))
+	fmt.Println(alg.MaxSubArray(nums))
 
 	fmt.Println("反转链表")
-	l = &pkg.ListNode{
+	l = &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				3,
-				&pkg.ListNode{
+				&alg.ListNode{
 					4,
-					&pkg.ListNode{
+					&alg.ListNode{
 						5,
 						nil,
 					},
@@ -126,7 +126,7 @@ func main() {
 		},
 	}
 
-	l = pkg.ReverseList(l)
+	l = alg.ReverseList(l)
 
 	for l != nil {
 		fmt.Println(l.Val)
@@ -135,52 +135,52 @@ func main() {
 
 	fmt.Println("删除有序数组中的重复项")
 	nums = []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-	fmt.Println(pkg.RemoveDuplicates(nums))
+	fmt.Println(alg.RemoveDuplicates(nums))
 
 	fmt.Println("只出现一次的数字")
 	nums = []int{4, 1, 2, 1, 2}
-	fmt.Println(pkg.SingleNumber(nums))
+	fmt.Println(alg.SingleNumber(nums))
 
 	fmt.Println("爬楼梯")
-	fmt.Println(pkg.ClimbStairs(3))
+	fmt.Println(alg.ClimbStairs(3))
 
 	fmt.Println("买卖股票的最佳时机")
 	nums = []int{7, 1, 5, 3, 6, 4}
-	fmt.Println(pkg.MaxProfit(nums))
+	fmt.Println(alg.MaxProfit(nums))
 
 	fmt.Println("最长公共前缀")
 	strs := []string{"flower", "flow", "flight"}
-	fmt.Println(pkg.LongestCommonPrefix(strs))
+	fmt.Println(alg.LongestCommonPrefix(strs))
 
 	fmt.Println("移动零")
 	nums = []int{0, 1, 0, 3, 12}
-	pkg.MoveZeroes(nums)
+	alg.MoveZeroes(nums)
 	fmt.Println(nums)
 
 	fmt.Println("合并两个有序链表")
-	l1 = &pkg.ListNode{
+	l1 = &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				4,
 				nil,
 			},
 		},
 	}
 
-	l2 = &pkg.ListNode{
+	l2 = &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			3,
-			&pkg.ListNode{
+			&alg.ListNode{
 				4,
 				nil,
 			},
 		},
 	}
 
-	l = pkg.MergeTwoLists(l1, l2)
+	l = alg.MergeTwoLists(l1, l2)
 	for l != nil {
 		fmt.Println(l.Val)
 		l = l.Next
@@ -188,26 +188,26 @@ func main() {
 
 	fmt.Println("和为 K 的子数组")
 	nums = []int{1, 2, 3}
-	fmt.Println(pkg.SubarraySum(nums, 3))
+	fmt.Println(alg.SubarraySum(nums, 3))
 
 	fmt.Println("搜索插入位置")
 	nums = []int{1, 3, 5, 7}
-	fmt.Println(pkg.SearchInsert(nums, 6))
+	fmt.Println(alg.SearchInsert(nums, 6))
 
 	fmt.Println("字符串相加")
 	num1 := "11"
 	num2 := "123"
 
-	fmt.Println(pkg.AddStrings(num1, num2))
+	fmt.Println(alg.AddStrings(num1, num2))
 
 	fmt.Println("两两交换链表中的节点")
-	l1 = &pkg.ListNode{
+	l1 = &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				3,
-				&pkg.ListNode{
+				&alg.ListNode{
 					4,
 					nil,
 				},
@@ -215,7 +215,7 @@ func main() {
 		},
 	}
 
-	l = pkg.SwapPairs(l1)
+	l = alg.SwapPairs(l1)
 	for l != nil {
 		fmt.Println(l.Val)
 		l = l.Next
@@ -223,17 +223,17 @@ func main() {
 
 	fmt.Println("螺旋矩阵")
 	matrix = [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}
-	fmt.Println(pkg.SpiralOrder(matrix))
+	fmt.Println(alg.SpiralOrder(matrix))
 
 	fmt.Println("排序链表")
 
-	l1 = &pkg.ListNode{
+	l1 = &alg.ListNode{
 		4,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				1,
-				&pkg.ListNode{
+				&alg.ListNode{
 					3,
 					nil,
 				},
@@ -241,7 +241,7 @@ func main() {
 		},
 	}
 
-	l = pkg.SortList(l1)
+	l = alg.SortList(l1)
 	for l != nil {
 		fmt.Println(l.Val)
 		l = l.Next
@@ -249,112 +249,112 @@ func main() {
 
 	fmt.Println("字母异位词分组")
 	strs = []string{"eat", "tea", "tan", "ate", "nat", "bat"}
-	fmt.Println(pkg.GroupAnagrams(strs))
+	fmt.Println(alg.GroupAnagrams(strs))
 
 	fmt.Println("最长连续序列")
 	nums = []int{100, 4, 200, 1, 3, 2}
-	fmt.Println(pkg.LongestConsecutive(nums))
+	fmt.Println(alg.LongestConsecutive(nums))
 
 	fmt.Println("找到字符串中所有字母异位词")
 	s = "cbaebabacd"
 	p := "abc"
-	fmt.Println(pkg.FindAnagrams(s, p))
+	fmt.Println(alg.FindAnagrams(s, p))
 
 	fmt.Println("合并区间")
 	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
 
-	fmt.Println(pkg.Merge(intervals))
+	fmt.Println(alg.Merge(intervals))
 
 	fmt.Println("快排")
 	nums = []int{100, 4, 200, 1, 3, 2}
-	pkg.QuickSort(nums, 0, len(nums)-1)
+	alg.QuickSort(nums, 0, len(nums)-1)
 	fmt.Println(nums)
 
 	fmt.Println("归并")
 	nums = []int{100, 4, 200, 1, 3, 2}
-	fmt.Println(pkg.MergeSort(nums))
+	fmt.Println(alg.MergeSort(nums))
 
 	fmt.Println("判断子序列")
 	s = "ahbgdc"
 	p = "abc"
-	fmt.Println(pkg.IsSubsequence(p, s))
+	fmt.Println(alg.IsSubsequence(p, s))
 
 	fmt.Println("除自身以外数组的乘积")
 	nums = []int{100, 4, 200, 1, 3, 2}
-	fmt.Println(pkg.ProductExceptSelf(nums))
+	fmt.Println(alg.ProductExceptSelf(nums))
 
 	fmt.Println("轮转数组")
 	nums = []int{1, 2, 3, 4, 5, 6, 7}
-	pkg.Rotate(nums, 6)
+	alg.Rotate(nums, 6)
 	fmt.Println(nums)
 
 	fmt.Println("前 K 个高频元素")
 	nums = []int{1, 1, 1, 2, 3, 3, 4, 4, 4}
-	fmt.Println(pkg.TopKFrequent(nums, 2))
+	fmt.Println(alg.TopKFrequent(nums, 2))
 
 	fmt.Println("数组中的第K个最大元素")
 	nums = []int{3, 2, 1, 5, 6, 4}
-	fmt.Println(pkg.FindKthLargest(nums, 2))
+	fmt.Println(alg.FindKthLargest(nums, 2))
 
 	fmt.Println("字符串解码")
 	s = "3[a2[c]]"
-	fmt.Println(pkg.DecodeString(s))
+	fmt.Println(alg.DecodeString(s))
 
 	fmt.Println("每日温度")
 	nums = []int{73, 74, 75, 71, 69, 72, 76, 73}
-	fmt.Println(pkg.DailyTemperatures(nums))
+	fmt.Println(alg.DailyTemperatures(nums))
 
 	fmt.Println("蛇形矩阵")
-	for _, m := range pkg.SpiderMatrix(9, 5) {
+	for _, m := range alg.SpiderMatrix(9, 5) {
 		fmt.Println(m)
 	}
 
 	fmt.Println("长度最小的子数组")
 	nums = []int{2, 3, 1, 2, 4, 3}
-	fmt.Println(pkg.MinSubArrayLen(7, nums))
+	fmt.Println(alg.MinSubArrayLen(7, nums))
 
 	fmt.Println("旋转图像")
 	matrix = [][]int{{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}}
-	pkg.RotateMatrix(matrix)
+	alg.RotateMatrix(matrix)
 	fmt.Println(matrix)
 
 	fmt.Println("组合之和")
 	nums = []int{2, 3, 5}
-	fmt.Println(pkg.CombinationSum(nums, 8))
+	fmt.Println(alg.CombinationSum(nums, 8))
 
 	fmt.Println("组合之和2")
 	nums = []int{2, 3, 5}
-	fmt.Println(pkg.CombinationSum2(nums, 8))
+	fmt.Println(alg.CombinationSum2(nums, 8))
 
 	fmt.Println("括号生成")
-	fmt.Println(pkg.GenerateParenthesis(2))
+	fmt.Println(alg.GenerateParenthesis(2))
 
 	fmt.Println("全排列")
 	nums = []int{1, 2, 3}
-	fmt.Println(pkg.Permute(nums))
+	fmt.Println(alg.Permute(nums))
 
 	fmt.Println("子集")
 	nums = []int{1, 2, 3}
-	fmt.Println(pkg.Subsets(nums))
+	fmt.Println(alg.Subsets(nums))
 
 	fmt.Println("下一个排列")
 	nums = []int{1, 2, 3}
-	pkg.NextPermutation(nums)
+	alg.NextPermutation(nums)
 	fmt.Println(nums)
 
 	fmt.Println("电话号码的字母组合")
-	fmt.Println(pkg.LetterCombinations("23"))
+	fmt.Println(alg.LetterCombinations("23"))
 
 	fmt.Println("旋转列表")
-	l = &pkg.ListNode{
+	l = &alg.ListNode{
 		1,
-		&pkg.ListNode{
+		&alg.ListNode{
 			2,
-			&pkg.ListNode{
+			&alg.ListNode{
 				3,
-				&pkg.ListNode{
+				&alg.ListNode{
 					4,
-					&pkg.ListNode{
+					&alg.ListNode{
 						5,
 						nil,
 					},
@@ -363,7 +363,7 @@ func main() {
 		},
 	}
 
-	l = pkg.RotateRight(l, 1)
+	l = alg.RotateRight(l, 1)
 	for l != nil {
 		fmt.Println(l.Val)
 		l = l.Next
@@ -373,66 +373,66 @@ func main() {
 	preorder := []int{3, 9, 20, 15, 7}
 	inorder := []int{9, 3, 15, 20, 7}
 
-	tree := pkg.BuildTree(preorder, inorder)
+	tree := alg.BuildTree(preorder, inorder)
 	fmt.Println(tree)
 
 	fmt.Println("从后序与中序遍历序列构造二叉树")
 	postorder := []int{9, 15, 7, 20, 3}
 	inorder = []int{9, 3, 15, 20, 7}
 
-	tree = pkg.PostBuildTree(inorder, postorder)
+	tree = alg.PostBuildTree(inorder, postorder)
 	fmt.Println(tree)
 
 	fmt.Println("最小路径和")
 	grid := [][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}
-	fmt.Println(pkg.MinPathSum(grid))
+	fmt.Println(alg.MinPathSum(grid))
 
 	fmt.Println("颜色分类")
 	nums = []int{2, 0, 2, 1, 1, 0}
-	pkg.SortColors(nums)
+	alg.SortColors(nums)
 	fmt.Println(nums)
 
 	fmt.Println("N字形变换")
 	s = "PAYPALISHIRING"
-	fmt.Println(pkg.Convert(s, 3))
+	fmt.Println(alg.Convert(s, 3))
 
 	fmt.Println("最长回文子串")
 	s = "babad"
-	fmt.Println(pkg.LongestPalindrome(s))
+	fmt.Println(alg.LongestPalindrome(s))
 
 	fmt.Println("路径之和")
-	tree = &pkg.TreeNode{
+	tree = &alg.TreeNode{
 		Val: 5,
-		Left: &pkg.TreeNode{
+		Left: &alg.TreeNode{
 			Val: 4,
-			Left: &pkg.TreeNode{
+			Left: &alg.TreeNode{
 				Val: 11,
-				Left: &pkg.TreeNode{
+				Left: &alg.TreeNode{
 					Val: 7,
 				},
-				Right: &pkg.TreeNode{
+				Right: &alg.TreeNode{
 					Val: 2,
 				},
 			},
 		},
-		Right: &pkg.TreeNode{
+		Right: &alg.TreeNode{
 			Val: 8,
-			Left: &pkg.TreeNode{
+			Left: &alg.TreeNode{
 				Val: 13,
 			},
-			Right: &pkg.TreeNode{
+			Right: &alg.TreeNode{
 				Val: 4,
-				Left: &pkg.TreeNode{
+				Left: &alg.TreeNode{
 					Val: 5,
 				},
-				Right: &pkg.TreeNode{
+				Right: &alg.TreeNode{
 					Val: 1,
 				},
 			},
 		},
 	}
 
-	fmt.Println(pkg.PathSum(tree, 22))
+	fmt.Println(alg.PathSum(tree, 22))
 
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)
