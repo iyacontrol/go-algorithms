@@ -13,7 +13,7 @@ type Task struct {
 	taskID int
 }
 
-func (t *Task) Do() {
+func (t *Task) Run() {
 	time.Sleep(1 * time.Second)
 	fmt.Printf("Task %d is being executed\n", t.taskID)
 }
@@ -476,6 +476,8 @@ func main() {
 	time.Sleep(250 * time.Second)
 
 	scheduler.Stop()
+
+	return
 
 	fmt.Println("交替打印数字")
 	chan1, chan2, chan3 := make(chan int, 1), make(chan int, 1), make(chan int, 1)

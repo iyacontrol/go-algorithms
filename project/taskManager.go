@@ -5,21 +5,21 @@ import (
 	"math"
 )
 
-type TaskI interface {
-	Do()
+type ITask interface {
+	Run()
 }
 
 type Worker struct {
 	id        int
-	taskQueue chan TaskI
-	quitChan  chan struct{}
+	taskQueue chan ITask
+	stopChan  chan struct{}
 }
 
-func NewWorker(id int, taskQueue chan TaskI) *Worker {
+func NewWorker(id int, taskQueque chan ITask) *Worker {
 	worker := &Worker{
 		id:        id,
-		taskQueue: taskQueue,
-		quitChan:  make(chan struct{}),
+		taskQueue: taskQueque,
+		stopChan:  make(chan struct{}),
 	}
 
 	go worker.run()
@@ -27,83 +27,79 @@ func NewWorker(id int, taskQueue chan TaskI) *Worker {
 	return worker
 }
 
-func (j *Worker) run() {
+func (w *Worker) run() {
 	for {
 		select {
-		case task := <-j.taskQueue:
-			task.Do()
-		case <-j.quitChan:
+		case task := <-w.taskQueue:
+			task.Run()
+		case <-w.stopChan:
 			return
 		}
 	}
 }
 
-func (j *Worker) Stop() {
+func (w *Worker) Stop() {
 	go func() {
-		j.quitChan <- struct{}{}
+		w.stopChan <- struct{}{}
 	}()
 }
 
 type TaskManager struct {
-	taskQueue  chan TaskI
+	taskQueue  chan ITask
 	workerPool []*Worker
 	stopChan   chan struct{}
 }
 
-func New(maxWorkers int) TaskManager {
-	if maxWorkers < 1 {
-		maxWorkers = 1
+func New(maxWorker int) *TaskManager {
+	if maxWorker < 1 {
+		maxWorker = 1
 	}
 
-	workerPool := make([]*Worker, maxWorkers)
-	for i := 0; i < maxWorkers; i++ {
-		workerPool[i] = NewWorker(i, make(chan TaskI, 10))
+	workerPool := make([]*Worker, maxWorker)
+	for i := 0; i < maxWorker; i++ {
+		workerPool[i] = NewWorker(i, make(chan ITask, 10))
+
 	}
 
-	taskQueue := make(chan TaskI, 2*maxWorkers*10)
-
-	tm := TaskManager{
-		taskQueue:  taskQueue,
+	tm := &TaskManager{
+		taskQueue:  make(chan ITask, 2*maxWorker*10),
 		workerPool: workerPool,
 		stopChan:   make(chan struct{}),
 	}
 
 	go tm.run()
+
 	return tm
 }
 
-func (t *TaskManager) run() {
+func (tm *TaskManager) run() {
 	for {
 		select {
-		case task := <-t.taskQueue:
-			worker := t.getWorker()
+		case task := <-tm.taskQueue:
+			worker := tm.getWorker()
 			worker.taskQueue <- task
-		case <-t.stopChan:
-			for _, worker := range t.workerPool {
-				worker.Stop()
+		case <-tm.stopChan:
+			for _, w := range tm.workerPool {
+				w.stopChan <- struct{}{}
 			}
 			return
 		}
 	}
 }
 
-func (t *TaskManager) Stop() {
+func (tm *TaskManager) Stop() {
 	go func() {
-		t.stopChan <- struct{}{}
+		tm.stopChan <- struct{}{}
 	}()
 }
 
-func (t *TaskManager) AddTask(task TaskI) {
-	t.taskQueue <- task
-}
-
-func (t *TaskManager) getWorker() *Worker {
+func (tm *TaskManager) getWorker() *Worker {
 	var idleWorker *Worker
 	minTaskCount := math.MaxInt32
 
-	for _, worker := range t.workerPool {
+	for _, worker := range tm.workerPool {
 		select {
-		case <-worker.quitChan:
+		case <-worker.stopChan:
 			continue
 		default:
 			if len(worker.taskQueue) < minTaskCount {
@@ -112,6 +108,13 @@ func (t *TaskManager) getWorker() *Worker {
 				idleWorker = worker
 			}
 		}
+
 	}
+
 	return idleWorker
+
+}
+
+func (tm *TaskManager) AddTask(task ITask) {
+	tm.taskQueue <- task
 }
