@@ -458,6 +458,14 @@ func main() {
 	fmt.Println("字符串相乘")
 	fmt.Println(alg.Multiply("1234", "567"))
 
+	fmt.Println("字符串转整数")
+	fmt.Println(alg.MyAtoi("4193 with words"))
+
+	fmt.Println("查找和最小的 K 对数字")
+	nums1 := []int{1, 7, 11}
+	nums2 := []int{2, 4, 6}
+	fmt.Println(alg.KSmallestPairs(nums1, nums2, 3))
+
 	return
 
 	fmt.Println("任务管理器")

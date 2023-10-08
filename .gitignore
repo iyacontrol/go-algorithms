@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# temp test
+top100
+top100.go
+
+hot100
+hot100.go
