@@ -466,6 +466,49 @@ func main() {
 	nums2 := []int{2, 4, 6}
 	fmt.Println(alg.KSmallestPairs(nums1, nums2, 3))
 
+	fmt.Println("leet 146:LRUCache")
+	cache := alg.Constructor(2)
+	cache.Put(1, 0)
+	cache.Put(2, 2)
+	cache.Get(1)
+	cache.Put(3, 3)
+	cache.Get(2)
+	cache.Put(4, 4)
+	fmt.Println(cache.Get(1))
+	cache.Get(3)
+	cache.Get(4)
+
+	fmt.Println("中序遍历")
+	fmt.Println(alg.InorderTraversal(tree))
+
+	fmt.Println("前序遍历")
+	fmt.Println(alg.PreorderTraversal(tree))
+
+	fmt.Println("杨辉三角")
+	fmt.Println(alg.Generate(5))
+
+	fmt.Println("二叉搜索树中第K小的元素")
+	root := &alg.TreeNode{
+		Val: 5,
+		Left: &alg.TreeNode{
+			Val: 3,
+			Left: &alg.TreeNode{
+				Val: 2,
+				Left: &alg.TreeNode{
+					Val: 1,
+				},
+			},
+			Right: &alg.TreeNode{
+				Val: 4,
+			},
+		},
+		Right: &alg.TreeNode{
+			Val: 6,
+		},
+	}
+
+	fmt.Println(alg.KthSmallest(root, 3))
+
 	return
 
 	fmt.Println("任务管理器")

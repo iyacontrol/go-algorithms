@@ -1,5 +1,7 @@
 package alg
 
+import "math/rand"
+
 func QuickSort(nums []int, low, high int) {
 	if low < high {
 		pivot := partition(nums, low, high)
@@ -10,6 +12,8 @@ func QuickSort(nums []int, low, high int) {
 }
 
 func partition(nums []int, low, high int) int {
+	randIndex := low + rand.Intn(high-low+1)
+	nums[low], nums[randIndex] = nums[randIndex], nums[low]
 	pivot := nums[low]
 
 	for low < high {
